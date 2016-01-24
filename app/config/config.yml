@@ -41,13 +41,12 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   "%database_driver%"
+        driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
         user:     "%database_user%"
         password: "%database_password%"
-        path: %kernel.root_dir%/%database_name%
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -68,3 +67,69 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+assetic:
+    debug:                '%kernel.debug%'
+    use_controller:
+        enabled:              '%kernel.debug%'
+        profiler:             false
+    #read_from:            '%assetic.read_from%'
+    #write_to:             '%kernel.root_dir%/../web'
+    java:                 /usr/bin/java
+    node:                 /usr/bin/node
+    ruby:                 /usr/bin/ruby
+    sass:                 /usr/bin/sass
+    # An key-value pair of any number of named elements
+    variables:
+    bundles:
+
+        # Defaults (all currently registered bundles):
+        - FrameworkBundle
+        - SecurityBundle
+        - TwigBundle
+        - MonologBundle
+        - SwiftmailerBundle
+        - DoctrineBundle
+        - AsseticBundle
+    assets:
+        # An array of named assets (e.g. some_asset, some_other_asset)
+        bootstrap_css:
+           inputs:
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less
+           filters:
+           - less
+           - cssrewrite
+           output: css/bootstrap.css
+           bootstrap_js:
+           inputs:
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/affix.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/alert.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/button.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/carousel.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/collapse.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/dropdown.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/modal.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/tooltip.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/popover.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/scrollspy.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/tab.js
+           - %kernel.root_dir%/../vendor/twbs/bootstrap/js/transition.js
+           output: js/bootstrap.js
+    filters:
+
+        # An array of named filters (e.g. some_filter, some_other_filter)
+        less:
+          node: /usr/bin/node
+          node_paths: [/usr/local/lib/node_modules]
+          apply_to: "\\.less$"
+        cssrewrite: ~
+    workers:
+        # see https://github.com/symfony/AsseticBundle/pull/119
+        # Cache can also be busted via the framework.templating.assets_version
+        # setting - see the "framework" configuration section
+        cache_busting:
+            enabled:              false
+    twig:
+        functions:
+            # An array of named functions (e.g. some_function, some_other_function)
+            #some_function:                 []
