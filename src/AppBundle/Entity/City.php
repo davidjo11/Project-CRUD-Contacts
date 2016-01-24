@@ -67,5 +67,28 @@ class City
     {
         return $this->name;
     }
-}
 
+    /**
+     * Set region
+     *
+     * @param \AppBundle\Entity\Region $region
+     *
+     * @return City
+     */
+    public function setRegion(\AppBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \AppBundle\Entity\Region
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+}

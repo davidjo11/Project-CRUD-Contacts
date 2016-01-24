@@ -72,5 +72,38 @@ class Country
     {
         return $this->name;
     }
-}
 
+    /**
+     * Add region
+     *
+     * @param \AppBundle\Entity\Region $region
+     *
+     * @return Country
+     */
+    public function addRegion(\AppBundle\Entity\Region $region)
+    {
+        $this->regions[] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Remove region
+     *
+     * @param \AppBundle\Entity\Region $region
+     */
+    public function removeRegion(\AppBundle\Entity\Region $region)
+    {
+        $this->regions->removeElement($region);
+    }
+
+    /**
+     * Get regions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRegions()
+    {
+        return $this->regions;
+    }
+}

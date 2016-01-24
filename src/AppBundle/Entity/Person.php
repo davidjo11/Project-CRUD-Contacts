@@ -187,4 +187,3 @@ class Person
         return $this->email;
     }
 }
-
