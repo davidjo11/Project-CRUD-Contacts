@@ -9,7 +9,12 @@
 namespace AppBundle\Utils;
 
 
-class Status
+abstract class Status extends \SplEnum
 {
+    const
+        __default = 0
+        , Particulier = 0
+        , Professionel = 1
+    ;
 
 }
