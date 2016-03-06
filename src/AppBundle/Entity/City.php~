@@ -98,45 +98,4 @@ class City
     {
         return $this->region;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->citizen = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add citizen
-     *
-     * @param \AppBundle\Entity\City $citizen
-     *
-     * @return City
-     */
-    public function addCitizen(\AppBundle\Entity\City $citizen)
-    {
-        $this->citizen[] = $citizen;
-
-        return $this;
-    }
-
-    /**
-     * Remove citizen
-     *
-     * @param \AppBundle\Entity\City $citizen
-     */
-    public function removeCitizen(\AppBundle\Entity\City $citizen)
-    {
-        $this->citizen->removeElement($citizen);
-    }
-
-    /**
-     * Get citizen
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCitizen()
-    {
-        return $this->citizen;
-    }
 }
